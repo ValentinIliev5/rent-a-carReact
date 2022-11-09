@@ -1,0 +1,62 @@
+{
+  "vehicles": [
+    {
+      "id": 1,
+      "brand": "VW",
+      "model": "Golf MK2",
+      "constructionYear": "1990",
+      "vehicleType": "Luxury",
+      "fuelType": "Electric",
+      "seats": 5,
+      "photo": "./src/imgs/golf2.jpg",
+      "available": 5
+    },
+    {
+      "id": 2,
+      "brand": "Audi",
+      "model": "A4",
+      "constructionYear": "2015",
+      "vehicleType": "economy",
+      "fuelType": "Diesel",
+      "seats": 5,
+      "photo": "./src/imgs/A4_2016.jpg",
+
+      "available": 5
+    },
+    {
+      "id": 3,
+      "brand": "Toyota",
+      "model": "Highlander",
+      "constructionYear": "2014",
+      "vehicleType": "SUV",
+      "fuelType": "Hybrid",
+      "seats": 5,
+      "photo": "./src/imgs/highlander.png",
+      "available": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Admin",
+      "lastName": "Adminov",
+      "email": "Admin@gmail.com",
+      "phoneNumber": "0888888888",
+      "password": "@dmin",
+      "address": "Plovdiv",
+      "photo": "https://picsum.photos/200/300?random=1",
+      "isAdmin": "true"
+    },
+    {
+      "id": 2,
+      "firstName": "Klient",
+      "lastName": "Klientov",
+      "email": "klient@kli.com",
+      "phoneNumber": "0888888887",
+      "password": "klient",
+      "address": "Asenovgrad",
+      "photo": "https://picsum.photos/200/300?random=2",
+      "isAdmin": "false"
+    }
+  ]
+}
