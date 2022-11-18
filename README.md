@@ -15,7 +15,7 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ### `npm run start-json:server`
-Starts the JSON database server.
+Starts the JSON database server in [http://localhost:3005](http://localhost:3005).
 
 ### `npm test`
 
