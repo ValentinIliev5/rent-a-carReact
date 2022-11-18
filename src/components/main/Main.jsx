@@ -1,10 +1,10 @@
 import "./Main.scss";
 import {Outlet} from "react-router"
-import { VehicleList } from "../vehicles/vehicle-list/VehicleList";
+import { UserList } from "../users/user-list/UserList";
 export function Main() {
     return(
     <div className="main-content">
-        <><VehicleList/></>
+        <><UserList/></>
     </div>
 )
 }
