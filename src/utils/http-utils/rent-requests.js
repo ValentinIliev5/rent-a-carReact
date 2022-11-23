@@ -15,7 +15,6 @@ export function saveRent(rentObj,price,isVip){
         id:`${rentObj.id}`,
         userId:`${rentObj.userId}`,
         vehicleId:`${rentObj.vehicleId}`,
-        status:`${rentObj.startDate}`,
         startDate:`${rentObj.startDate}`,
         endDate:`${rentObj.endDate}`,
         totalPrice:`${calculatePrice(rentObj.startDate,rentObj.endDate,price,isVip)}`
@@ -27,6 +26,15 @@ export function saveRent(rentObj,price,isVip){
         return axios.put(`${apiUrl}/${rentObjtoAdd.id}`,rentObjtoAdd);
     }
     return axios.post(apiUrl,rentObjtoAdd);
+
+}
+export function saveFullRent(rentObj)
+{
+    if(rentObj.id)
+    {
+        return axios.put(`${apiUrl}/${rentObj.id}`,rentObj);
+    }
+    return axios.post(apiUrl,rentObj);
 
 }
 

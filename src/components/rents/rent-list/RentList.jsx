@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { getLoggedUser } from "../../../utils/http-utils/auth-http-utils";
-import { deleteRent, getRents } from "../../../utils/http-utils/rent-requests";
+import { deleteRent, getRentById, getRents, saveFullRent, saveRent } from "../../../utils/http-utils/rent-requests";
 
 export function RentList(){
     const navigate = useNavigate();
@@ -20,6 +20,8 @@ export function RentList(){
         }
     },[]);
 
+    const [rentToCancel,setRentToCancel] = useState();
+
     const renderTableBody = () =>{
         if(!getLoggedUser().isAdmin)
         return rents.filter(r=>r.userId == getLoggedUser().id).map(rent =>{
@@ -34,18 +36,29 @@ export function RentList(){
                     });
                 });
             }
+            const onCancel = () =>{
+                getRentById(rent.id).then(response=>{
+                    setRentToCancel(response.data);
+                })
+                rentToCancel.isActive=false;
+                console.log(rentToCancel);
+                saveFullRent(rentToCancel);
+            }
 
         return <tr key= {rent.id}>
             <td>{rent.id}</td>
             <td>{getLoggedUser().id==rent.userId ? `You` : `User ${rent.userId}`}</td>
             <td>{rent.vehicleId}</td>
-            <td>{rent.status}</td>
             <td>{rent.startDate}</td>
             <td>{rent.endDate}</td>
             <td>{rent.totalPrice}</td>
+            {rent.isActive?<td>Active</td>:<td>Canceled</td>}
             <td className="action-buttons">
+                {rent.isActive?<button className="cancel" onClick={onCancel}>Cancel</button>:""}
                 <button className="edit" onClick={onEdit}>Edit</button>
                 <button className="delete" onClick={onDelete}>Delete</button>
+                
+                
             </td>
         </tr>
 
@@ -62,16 +75,23 @@ export function RentList(){
                     });
                 });
             }
+            const onCancel = () =>{
+                console.log(rent)
+                rent.isActive=false;
+                saveFullRent(rent);
+
+            }
 
         return <tr key= {rent.id}>
             <td>{rent.id}</td>
             <td>{getLoggedUser().id==rent.userId ? `You` : `User ${rent.userId}`}</td>
             <td>{rent.vehicleId}</td>
-            <td>{rent.status}</td>
             <td>{rent.startDate}</td>
             <td>{rent.endDate}</td>
             <td>{rent.totalPrice}</td>
+            {rent.isActive?<td>Active</td>:<td>Canceled</td>}
             <td className="action-buttons">
+            {rent.isActive?<button className="cancel" onClick={onCancel}>Cancel</button>:""}
                 <button className="edit" onClick={onEdit}>Edit</button>
                 <button className="delete" onClick={onDelete}>Delete</button>
             </td>
@@ -87,10 +107,10 @@ export function RentList(){
                         <td>ID</td>
                         <td>User</td>
                         <td>Vehicle ID</td>
-                        <td>Status</td>
                         <td>Start Date</td>
                         <td>End Date</td>
                         <td>Price</td>
+                        <td>Status</td>
                     </tr>
                 </thead>
                 <tbody>
