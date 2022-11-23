@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { calculatePrice } from './rents-helper';
 
 const apiUrl = 'http://localhost:3005/rents';
 
@@ -8,12 +9,24 @@ export function getRents(){
 export function getRentById(id){
     return axios.get(`${apiUrl}/${id}`);
 }
-export function saveRent(rentObj){
-    if(rentObj.id)
-    {
-        return axios.put(`${apiUrl}/${rentObj.id}`,rentObj);
+export function saveRent(rentObj,price,isVip){
+
+    const rentObjtoAdd ={
+        id:`${rentObj.id}`,
+        userId:`${rentObj.userId}`,
+        vehicleId:`${rentObj.vehicleId}`,
+        status:`${rentObj.startDate}`,
+        startDate:`${rentObj.startDate}`,
+        endDate:`${rentObj.endDate}`,
+        totalPrice:`${calculatePrice(rentObj.startDate,rentObj.endDate,price,isVip)}`
+
     }
-    return axios.post(apiUrl,rentObj);
+    console.log(rentObjtoAdd);
+    if(rentObjtoAdd.id)
+    {
+        return axios.put(`${apiUrl}/${rentObjtoAdd.id}`,rentObjtoAdd);
+    }
+    return axios.post(apiUrl,rentObjtoAdd);
 
 }
 

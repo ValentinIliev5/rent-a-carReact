@@ -38,8 +38,12 @@ export function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
+                            
                             <Button variant="light"><Link className="nav-link" to="/users">Users</Link></Button>
+
                             <Button variant="light"><Link className="nav-link" to="/vehicles">Vehicles</Link></Button>
+
+                            <Button variant="light"><Link className="nav-link" to="/rents">Rents</Link></Button>
                             {renderAdminLinks()}
                         </Nav>
 

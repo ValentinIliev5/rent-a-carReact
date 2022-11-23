@@ -17,6 +17,10 @@ export function VehicleCard({vehicle , onDelete})
         navigate(`/vehicles/edit/${vehicle.id}`);
     }
 
+    const navigateToRent = () =>{
+        navigate(`/rent/create/${vehicle.id}`);
+    }
+
     const renderActionButtons = () => {
         const loggedUser = getLoggedUser();
 
@@ -58,7 +62,7 @@ return(
                     <span className='value'>{vehicle.price}$</span>
             </Card.Text>
             <div className='btnHolder'>
-                <Button style={{margin:"3px"}} variant='primary'>Rent</Button>
+                <Button onClick={navigateToRent} style={{margin:"3px"}} variant='primary'>Rent</Button>
                 {renderActionButtons()}
             </div>
         </Card.Body>
