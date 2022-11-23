@@ -1,28 +1,54 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { useNavigate } from 'react-router';
+import { getLoggedUser } from '../../../utils/http-utils/auth-http-utils';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
-import "./UserCard.scss";
+export function UserCard({ user, onDelete}) {
 
-export function UserCard({user})
-{
-return(
-    <Card style = {{width:"17rem"}}>
-        <Card.Img style={{height:"200px",width:'100%'}} variant ="top" src = {user.photo}/>
-        <Card.Body>
-            <Card.Title> {user.firstName} {user.lastName}</Card.Title>
-            <Card.Text>
-                    <span className='key'>Email: </span>
-                    <span className='value'>{user.email}</span>
-            </Card.Text>
-            <Card.Text>
-                    <span className='key'>Phone: </span>
-                    <span className='value'>{user.phoneNumber}</span>
-            </Card.Text>
-            <div className='btnHolder'>
-                <Button style={{margin:"3px"}} variant='warning'>Edit</Button>
-                <Button style={{margin:"3px"}} variant='danger'>Delete</Button>
-            </div>
-        </Card.Body>
-    </Card>
-)
+    const navigate = useNavigate();
+
+    const onDeleteClicked = () => {
+        onDelete(user.id);
+    }
+
+    const navigateToUpdate = () => {
+        navigate(`/users/edit/${user.id}`);
+    }
+
+    const renderActionButtons = () => {
+        const loggedUser = getLoggedUser();
+
+        if (loggedUser.isAdmin && loggedUser.id !== user.id) {
+            return <>
+                <Button variant = "warning" onClick={navigateToUpdate} >Update</Button>
+                <Button variant = "danger" onClick={onDeleteClicked}>Delete</Button>
+            </>
+        }
+
+        if (loggedUser.id === user.id) {
+            return <Button variant = "warning" onClick={navigateToUpdate} >Update</Button>;
+        }
+    }
+
+    return (
+        <Card style={{ width: '18rem', margin: '20px' }}>
+            <Card.Img variant="top" src={user.photo} />
+            <Card.Body>
+                <Card.Title>
+                    <Link to={`/profile/${user.id}`}>
+                        {user.firstName} {user.lastName}
+                    </Link>
+                </Card.Title>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+                <ListGroup.Item>Address: {user.address}</ListGroup.Item>
+                <ListGroup.Item>Email: {user.email} </ListGroup.Item>
+            </ListGroup>
+            <Card.Body>
+                {renderActionButtons()}
+            </Card.Body>
+        </Card>
+    );
 }

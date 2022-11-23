@@ -6,6 +6,8 @@ import {Footer} from '../footer/Footer';
 export function Layout() {
     return (
         <div className="layout">
+
+            <Header/>
             <Main />
             <Footer />
         </div>

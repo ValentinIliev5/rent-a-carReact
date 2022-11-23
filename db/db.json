@@ -9,7 +9,8 @@
       "fuelType": "Electric",
       "seats": 4,
       "photo": "https://uploads.vw-mms.de/system/production/images/vwn/013/129/images/292275b41e5e0de97398ee09bf90d787f559aff7/C83_6374_web_1600.jpg?1649148934",
-      "available": 5
+      "available": 5,
+      "price": 1000
     },
     {
       "id": 2,
@@ -20,7 +21,8 @@
       "fuelType": "Diesel",
       "seats": 4,
       "photo": "https://tdrresearch.azureedge.net/photos/chrome/Expanded/White/2016AUC010002/2016AUC01000201.jpg",
-      "available": 5
+      "available": 5,
+      "price": "400"
     },
     {
       "id": 3,
@@ -31,7 +33,8 @@
       "fuelType": "Hybrid",
       "seats": 5,
       "photo": "https://platform.cstatic-images.com/large/in/v2/stock_photos/31331c0a-9ec4-4194-9181-a29a517bb56c/2ab144a3-f609-4d16-8ad5-67b23231aa1d.png",
-      "available": 5
+      "available": 5,
+      "price": 500
     }
   ],
   "users": [

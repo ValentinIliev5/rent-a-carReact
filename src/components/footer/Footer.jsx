@@ -3,8 +3,8 @@ import "./Footer.scss";
 export function Footer(){
     return(
         <div className="footer">
-            <h4>Made By Valentin Iliev 2001321032</h4>
-            <h5>Github:Link</h5>
+            <h5>Made By Valentin Iliev 2001321032, November 2022</h5>
+            <a href="https://github.com/ValentinIliev5"><h6>Github</h6></a>
         </div>
     )
 }

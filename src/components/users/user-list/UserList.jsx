@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../../../utils/http-utils/user-requests";
+import { deleteUser,getUsers } from "../../../utils/http-utils/user-requests";
 import { UserCard } from "../user-card/UserCard";
 
 import "./UserList.scss"
@@ -13,10 +13,18 @@ export function UserList(){
             setUsers(response.data)
         });
     }, []);
+
+    const onDelete = (id) => {
+        deleteUser(id).then(() => {
+            setUsers((prevState) => {
+                return prevState.filter(user => user.id !== id);
+            });
+        });
+    }
    
     return(
         <div className="vehicle-list-wrapper">
-            {users.map(user => <UserCard key = {users.id} user={user}/>)}
+            {users.map(user => <UserCard key = {user.id} user={user} onDelete={onDelete}/>)}
         </div>
-        )
+        );
 }
