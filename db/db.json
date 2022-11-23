@@ -47,18 +47,33 @@
       "password": "@dmin",
       "address": "Plovdiv",
       "photo": "https://picsum.photos/200/300?random=1",
-      "isAdmin": "true"
+      "isAdmin": "true",
+      "rents": 0,
+      "isVip": "true"
     },
     {
       "id": 2,
-      "firstName": "Klient",
+      "firstName": "Klienta",
       "lastName": "Klientov",
       "email": "klient@kli.com",
       "phoneNumber": "0888888887",
       "password": "klient",
       "address": "Asenovgrad",
       "photo": "https://picsum.photos/200/300?random=2",
-      "isAdmin": "false"
+      "isAdmin": "false",
+      "rents": 0,
+      "isVip": false
+    }
+  ],
+  "rents": [
+    {
+      "id": 1,
+      "userId": "2",
+      "vehicleId": "3",
+      "status": "In Progress",
+      "startDate": "2022-06-04",
+      "endDate": "2022-06-11",
+      "totalPrice": "583.10"
     }
   ]
 }

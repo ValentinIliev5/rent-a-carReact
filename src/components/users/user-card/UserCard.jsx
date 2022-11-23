@@ -45,7 +45,10 @@ export function UserCard({ user, onDelete}) {
             <ListGroup className="list-group-flush">
                 <ListGroup.Item>Address: {user.address}</ListGroup.Item>
                 <ListGroup.Item>Email: {user.email} </ListGroup.Item>
+                {user.isVip? <ListGroup.Item><b> VIP</b></ListGroup.Item>:''}
+                {getLoggedUser().isAdmin?<ListGroup.Item><b> Rents: {user.rents}</b></ListGroup.Item>:''}
             </ListGroup>
+            
             <Card.Body>
                 {renderActionButtons()}
             </Card.Body>

@@ -73,11 +73,16 @@ export function UserForm() {
 
         if (!loggedUser || !loggedUser.isAdmin || loggedUser.id === currentUser.id)
             return '';
-
-        return <Form.Group className="mb-3" controlId="formBasicEmail">
+        return <>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Is Admin</Form.Label>
             <Form.Check name="isAdmin" onChange={onCheckboxChange} checked={parseBool(currentUser.isAdmin)} />
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Is Vip</Form.Label>
+            <Form.Check name="isVIP" onChange={onCheckboxChange} checked={parseBool(currentUser.isVip)} />
+        </Form.Group>
+        </>
     }
 
     const navigateIfNotAdmin = () => {

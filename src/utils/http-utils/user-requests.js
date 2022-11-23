@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getLoggedUser } from './auth-http-utils';
 
 const apiUrl = 'http://localhost:3005/users';
 
@@ -25,7 +26,10 @@ export async function saveUser(userObj) {
 
     if (userObj.id) {
         return axios.put(`${apiUrl}/${userObj.id}`, userObj).then(() => {
-            localStorage.setItem('loggedUser', JSON.stringify(userObj));
+            if(userObj.id===getLoggedUser().id)
+            {
+                localStorage.setItem('loggedUser', JSON.stringify(userObj));
+            }
         });
     }
 
