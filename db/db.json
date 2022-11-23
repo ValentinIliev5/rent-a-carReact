@@ -9,7 +9,7 @@
       "fuelType": "Electric",
       "seats": 4,
       "photo": "https://uploads.vw-mms.de/system/production/images/vwn/013/129/images/292275b41e5e0de97398ee09bf90d787f559aff7/C83_6374_web_1600.jpg?1649148934",
-      "available": 4,
+      "available": 5,
       "price": 1000
     },
     {
@@ -48,7 +48,7 @@
       "address": "Plovdiv",
       "photo": "https://picsum.photos/200/300?random=1",
       "isAdmin": "true",
-      "rents": 1,
+      "rents": 2,
       "isVip": "true"
     },
     {
@@ -83,6 +83,15 @@
       "startDate": "2005-11-13",
       "endDate": "2005-11-15",
       "totalPrice": "1700"
+    },
+    {
+      "id": 3,
+      "userId": "1",
+      "vehicleId": "1",
+      "status": "2005-11-14",
+      "startDate": "2005-11-14",
+      "endDate": "2005-11-17",
+      "totalPrice": "2550"
     }
   ]
 }
