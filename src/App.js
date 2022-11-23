@@ -12,6 +12,7 @@ import { VehicleList } from './components/vehicles/vehicle-list/VehicleList';
 import { VehicleForm } from './components/vehicles/vehicle-form/VehicleForm';
 import { CreateRent } from './components/rents/rent/CreateRent';
 import { RentList } from "./components/rents/rent-list/RentList";
+import { EditRent } from "./components/rents/editRent/EditRent";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="vehicles/create" element={<VehicleForm />} />
           <Route path="vehicles/edit/:id" element={<VehicleForm />} />
           <Route path="rent/create/:id" element={<CreateRent />} />
+          <Route path="rent/edit/:id" element={<EditRent />} />
           <Route path="rents" element={<RentList />} />
           <Route path="profile/:id" element={<UserProfile />} />
         </Route>
