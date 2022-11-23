@@ -21,7 +21,7 @@
       "fuelType": "Diesel",
       "seats": 4,
       "photo": "https://tdrresearch.azureedge.net/photos/chrome/Expanded/White/2016AUC010002/2016AUC01000201.jpg",
-      "available": 5,
+      "available": 4,
       "price": 400
     },
     {
@@ -61,7 +61,7 @@
       "address": "Asenovgrad",
       "photo": "https://picsum.photos/200/300?random=2",
       "isAdmin": "false",
-      "rents": 0,
+      "rents": 1,
       "isVip": false
     }
   ],
@@ -92,6 +92,15 @@
       "startDate": "2005-11-14",
       "endDate": "2005-11-17",
       "totalPrice": "2550"
+    },
+    {
+      "id": 4,
+      "userId": "2",
+      "vehicleId": "2",
+      "status": "2022-12-11",
+      "startDate": "2022-12-11",
+      "endDate": "2022-12-13",
+      "totalPrice": "800"
     }
   ]
 }

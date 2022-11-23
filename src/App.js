@@ -11,6 +11,7 @@ import { UserProfile } from './components/users/user-profile/UserProfile';
 import { VehicleList } from './components/vehicles/vehicle-list/VehicleList';
 import { VehicleForm } from './components/vehicles/vehicle-form/VehicleForm';
 import { CreateRent } from './components/rents/rent/CreateRent';
+import { RentList } from "./components/rents/rent-list/RentList";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="vehicles/create" element={<VehicleForm />} />
           <Route path="vehicles/edit/:id" element={<VehicleForm />} />
           <Route path="rent/create/:id" element={<CreateRent />} />
+          <Route path="rents" element={<RentList />} />
           <Route path="profile/:id" element={<UserProfile />} />
         </Route>
       </Routes>

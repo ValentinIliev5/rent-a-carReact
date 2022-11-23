@@ -87,6 +87,11 @@ export function UserForm() {
 
     const navigateIfNotAdmin = () => {
         const loggedUser = getLoggedUser();
+        
+        if(loggedUser.id==params.id)
+        {
+            return <Navigate to={`/users/edit/${loggedUser.id}`}/>
+        }
 
         if (loggedUser && !loggedUser.isAdmin)
             return <Navigate to='/users' />
