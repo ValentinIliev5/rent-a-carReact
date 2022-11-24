@@ -4,6 +4,8 @@ import { getRentById, saveFullRent } from "../../../utils/http-utils/rent-reques
 import { Button, Form } from "react-bootstrap";
 import { useNavigate, useParams, Navigate } from "react-router";
 import { getLoggedUser } from "../../../utils/http-utils/auth-http-utils";
+import { getVehicleById } from "../../../utils/http-utils/vehicle-requests";
+import { getUserById } from "../../../utils/http-utils/user-requests";
 
 export function EditRent(){
     const params = useParams();
@@ -11,27 +13,42 @@ export function EditRent(){
 
     const [rent,setRent] = useState({
         id:"",
-        userId: `${getLoggedUser().id}`,
-        vehicleId: `${params.id}`,
+        userId: "",
+        vehicleId: "",
         startDate: "",
         endDate: "",
         totalPrice:"",
         isActive:false
     });
 
+    
+
     useEffect(()=>{
         getRentById(params.id).then((rent)=>{
             setRent(rent.data);
-        })
-    },[])
+        });
+    },[params.id]);
 
-    const onSubmit = (event) =>{
+    const onSubmit = async (event) =>{
         event.preventDefault();
 
-        saveFullRent(rent).then(()=>{
+        const [vehicle,user] = await Promise.all(
+            [
+            getVehicleById(rent.vehicleId),
+            getUserById(rent.userId)
+            ]
+            
+        )
+
+
+        console.log("vhc price" + vehicle.data.price);
+
+        saveFullRent(rent,user.data.isVip,vehicle.data.price).then(()=>{
             navigate("/rents");
         });
     }
+
+
     const onFormControlChange = (event) =>{
         let value = event.target.value;
 

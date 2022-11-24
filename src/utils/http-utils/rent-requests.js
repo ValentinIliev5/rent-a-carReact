@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { calculatePrice } from './rents-helper';
+import { getUserById } from './user-requests';
+import { getVehicleById } from './vehicle-requests';
 
 const apiUrl = 'http://localhost:3005/rents';
 
@@ -17,7 +19,8 @@ export function saveRent(rentObj,price,isVip){
         vehicleId:`${rentObj.vehicleId}`,
         startDate:`${rentObj.startDate}`,
         endDate:`${rentObj.endDate}`,
-        totalPrice:`${calculatePrice(rentObj.startDate,rentObj.endDate,price,isVip)}`
+        totalPrice:`${calculatePrice(rentObj.startDate,rentObj.endDate,price,isVip)}`,
+        isActive:true
 
     }
     console.log(rentObjtoAdd);
@@ -28,8 +31,14 @@ export function saveRent(rentObj,price,isVip){
     return axios.post(apiUrl,rentObjtoAdd);
 
 }
-export function saveFullRent(rentObj)
+export function saveFullRent(rentObj,isVip,vehPrice)
 {
+    console.log("veh price " + vehPrice);
+    console.log("user isvip " + isVip);
+    rentObj.totalPrice = calculatePrice(rentObj.startDate
+        ,rentObj.endDate
+        ,vehPrice
+        ,isVip);
     if(rentObj.id)
     {
         return axios.put(`${apiUrl}/${rentObj.id}`,rentObj);

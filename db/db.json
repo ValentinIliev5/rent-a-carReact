@@ -9,7 +9,7 @@
       "fuelType": "Electric",
       "seats": 4,
       "photo": "https://uploads.vw-mms.de/system/production/images/vwn/013/129/images/292275b41e5e0de97398ee09bf90d787f559aff7/C83_6374_web_1600.jpg?1649148934",
-      "available": 5,
+      "available": 3,
       "price": 1000
     },
     {
@@ -21,7 +21,7 @@
       "fuelType": "Diesel",
       "seats": 4,
       "photo": "https://tdrresearch.azureedge.net/photos/chrome/Expanded/White/2016AUC010002/2016AUC01000201.jpg",
-      "available": 4,
+      "available": 3,
       "price": 400
     },
     {
@@ -48,7 +48,7 @@
       "address": "Plovdiv",
       "photo": "https://picsum.photos/200/300?random=1",
       "isAdmin": "true",
-      "rents": 2,
+      "rents": 3,
       "isVip": "true"
     },
     {
@@ -81,7 +81,7 @@
       "vehicleId": "1",
       "startDate": "2005-11-13",
       "endDate": "2005-11-15",
-      "totalPrice": "1700",
+      "totalPrice": 1700,
       "isActive": true
     },
     {
@@ -99,6 +99,33 @@
       "vehicleId": "2",
       "startDate": "2022-12-11",
       "endDate": "2022-12-13",
+      "totalPrice": "1700",
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "userId": "1",
+      "vehicleId": "2",
+      "startDate": "2022-11-15",
+      "endDate": "2022-11-22",
+      "totalPrice": 2380,
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "userId": "1",
+      "vehicleId": "1",
+      "startDate": "2022-12-11",
+      "endDate": "2022-12-13",
+      "totalPrice": 1700,
+      "isActive": true
+    },
+    {
+      "id": 7,
+      "userId": "1",
+      "vehicleId": "1",
+      "startDate": "2022-11-24",
+      "endDate": "2022-11-26",
       "totalPrice": "1700",
       "isActive": true
     }

@@ -3,12 +3,12 @@ import { getLoggedUser } from './auth-http-utils';
 
 const apiUrl = 'http://localhost:3005/users';
 
-export function getUsers() {
-    return axios.get(apiUrl);
+export async function getUsers() {
+    return await axios.get(apiUrl);
 }
 
-export function getUserById(id) {
-    return axios.get(`${apiUrl}/${id}`);
+export async function getUserById(id) {
+    return await axios.get(`${apiUrl}/${id}`);
 }
 export async function saveUser(userObj) {
 

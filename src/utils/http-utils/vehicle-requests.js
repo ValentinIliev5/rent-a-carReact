@@ -2,13 +2,13 @@ import axios from "axios";
 
 const apiUrl = "http://localhost:3005/vehicles";
 
-export function getVehicles()
+export async function getVehicles()
 {
-    return axios.get(apiUrl);
+    return await axios.get(apiUrl);
 }
 
-export function getVehicleById(id){
-    return axios.get(`${apiUrl}/${id}`);
+export async function getVehicleById(id){
+    return await axios.get(`${apiUrl}/${id}`);
 }
 
 export async function saveVehicle(vehicleObj) {
