@@ -17,6 +17,10 @@ You may also see any lint errors in the console.
 ### `npm run start-json:server`
 Starts the JSON database server in [http://localhost:3005](http://localhost:3005).
 
+### `test data`
+-Admin user : email = Admin@gmail.com, pass = @dmin
+-Normal user : email = klient@kli.com, pass = klient
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
