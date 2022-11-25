@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import { Link } from 'react-router-dom';
 import { getLoggedUser } from "../../../utils/http-utils/auth-http-utils";
-import { deleteRent, getRentById, getRents, saveFullRent, saveRent, updateRent } from "../../../utils/http-utils/rent-requests";
-import { getUserById } from "../../../utils/http-utils/user-requests";
+import { deleteRent, getRents, updateRent } from "../../../utils/http-utils/rent-requests";
 import { getVehicleById, saveVehicle } from "../../../utils/http-utils/vehicle-requests";
 
 export function RentList(){
@@ -21,8 +21,6 @@ export function RentList(){
             })
         }
     },[]);
-
-    const [rentToCancel,setRentToCancel] = useState();
 
     const renderTableBody = () =>{
         if(!getLoggedUser().isAdmin)
@@ -51,9 +49,6 @@ export function RentList(){
 
                 vehicle.data.available+=1;
 
-                console.log(rentToCancel);
-                console.log(vehicle.data);
-
                 updateRent(rent).then(saveVehicle(vehicle.data));
                 
             }
@@ -68,9 +63,11 @@ export function RentList(){
             {rent.isActive?<td>Active</td>:<td>Canceled</td>}
             <td className="action-buttons">
 
-                {rent.isActive?<button className="cancel" onClick={onCancel}>Cancel</button>:""}
-                <button className="edit" onClick={onEdit}>Edit</button>
-                <button className="delete" onClick={onDelete}>Delete</button>
+                {rent.isActive?<Button style={{margin:'3px'}} className="cancel" variant ="light" onClick={onCancel}>Cancel</Button>:""}
+
+                <Button className="edit" variant ="warning" onClick={onEdit}>Edit</Button>
+
+                {getLoggedUser.isAdmin?<Button className="delete" variant ="danger" onClick={onDelete}>Delete</Button> : ""}
                 
                 
             </td>
@@ -90,7 +87,7 @@ export function RentList(){
                 });
             }
             const onCancel = async () =>{
-                console.log(rent);
+
                 rent.isActive=false;
                 const [vehicle] = await Promise.all(
                     [
@@ -113,9 +110,12 @@ export function RentList(){
             <td>{rent.totalPrice}</td>
             {rent.isActive?<td>Active</td>:<td>Canceled</td>}
             <td className="action-buttons">
-            {rent.isActive?<button className="cancel" onClick={onCancel}>Cancel</button>:""}
-                <button className="edit" onClick={onEdit}>Edit</button>
-                <button className="delete" onClick={onDelete}>Delete</button>
+
+            {rent.isActive?<Button  className="cancel" variant ="light" onClick={onCancel}><Link to="/vehicles">Cancel</Link></Button>:""}
+
+                <Button className="edit" variant ="warning" onClick={onEdit}>Edit</Button>
+
+                <Button className="delete" variant ="danger" onClick={onDelete}>Delete</Button>
             </td>
         </tr>
         })
