@@ -46,6 +46,10 @@ export function saveFullRent(rentObj,isVip,vehPrice)
     return axios.post(apiUrl,rentObj);
 
 }
+export function updateRent(rentObj)
+{
+    return axios.put(`${apiUrl}/${rentObj.id}`,rentObj);
+}
 
 export function deleteRent(id)
 {

@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { getLoggedUser } from "../../../utils/http-utils/auth-http-utils";
-import { deleteRent, getRentById, getRents, saveFullRent, saveRent } from "../../../utils/http-utils/rent-requests";
+import { deleteRent, getRentById, getRents, saveFullRent, saveRent, updateRent } from "../../../utils/http-utils/rent-requests";
+import { getUserById } from "../../../utils/http-utils/user-requests";
+import { getVehicleById, saveVehicle } from "../../../utils/http-utils/vehicle-requests";
 
 export function RentList(){
     const navigate = useNavigate();
@@ -36,13 +38,24 @@ export function RentList(){
                     });
                 });
             }
-            const onCancel = () =>{
-                getRentById(rent.id).then(response=>{
-                    setRentToCancel(response.data);
-                })
-                rentToCancel.isActive=false;
+            const onCancel = async () =>{
+                console.log(rent);
+
+                const [vehicle] = await Promise.all(
+                    [
+                    getVehicleById(rent.vehicleId)
+                    ]
+                    
+                );
+                rent.isActive=false;
+
+                vehicle.data.available+=1;
+
                 console.log(rentToCancel);
-                saveFullRent(rentToCancel);
+                console.log(vehicle.data);
+
+                updateRent(rent).then(saveVehicle(vehicle.data));
+                
             }
 
         return <tr key= {rent.id}>
@@ -54,6 +67,7 @@ export function RentList(){
             <td>{rent.totalPrice}</td>
             {rent.isActive?<td>Active</td>:<td>Canceled</td>}
             <td className="action-buttons">
+
                 {rent.isActive?<button className="cancel" onClick={onCancel}>Cancel</button>:""}
                 <button className="edit" onClick={onEdit}>Edit</button>
                 <button className="delete" onClick={onDelete}>Delete</button>
@@ -75,10 +89,18 @@ export function RentList(){
                     });
                 });
             }
-            const onCancel = () =>{
-                console.log(rent)
+            const onCancel = async () =>{
+                console.log(rent);
                 rent.isActive=false;
-                saveFullRent(rent);
+                const [vehicle] = await Promise.all(
+                    [
+                    getVehicleById(rent.vehicleId)
+                    ]
+                    
+                );
+                vehicle.data.available+=1;
+                saveVehicle(vehicle.data);
+                updateRent(rent);
 
             }
 
