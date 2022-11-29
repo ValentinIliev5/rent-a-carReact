@@ -62,7 +62,8 @@ return(
                     <span className='value'>{vehicle.price}$</span>
             </Card.Text>
             <div className='btnHolder'>
-                <Button onClick={navigateToRent} style={{margin:"3px"}} variant='primary'>Rent</Button>
+                {vehicle.available!=0?
+                <Button onClick={navigateToRent} style={{margin:"3px"}} variant='primary'>Rent</Button>: ""}
                 {renderActionButtons()}
             </div>
         </Card.Body>

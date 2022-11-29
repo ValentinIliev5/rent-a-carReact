@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { calculatePrice } from './rents-helper';
-import { getUserById } from './user-requests';
-import { getVehicleById } from './vehicle-requests';
 
 const apiUrl = 'http://localhost:3005/rents';
 
